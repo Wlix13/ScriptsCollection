@@ -1,0 +1,13 @@
+services:
+  twitch_bot:
+    image: rdavidoff/twitch-channel-points-miner-v2:latest
+    container_name: twitch_bot
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Moscow
+    volumes:
+      - ./cookies:/usr/src/app/cookies
+      - ./run.py:/usr/src/app/run.py:ro
+    working_dir: /usr/src/app
+    entrypoint: ["python", "run.py"]
+    network_mode: bridge

@@ -1,0 +1,10 @@
+services:
+  tgpy:
+    image: tgpy/tgpy
+    container_name: tgpy
+    environment:
+      - TZ=Europe/Moscow
+    volumes:
+      - ./modules:/data/modules
+      - ./TGPy.session:/data/TGPy.session
+    network_mode: bridge

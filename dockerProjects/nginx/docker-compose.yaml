@@ -1,0 +1,15 @@
+services:
+  nginx:
+    image: nginx:latest
+    container_name: static-site
+    restart: unless-stopped
+    volumes:
+      - /containers/nginx/html:/usr/share/nginx/html:ro
+      - /containers/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - cloudflared
+
+networks:
+  cloudflared:
+    name: cloudflared
+    external: true
